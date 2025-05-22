@@ -1,1 +1,12 @@
 node_modules/
+
+# Prisma generated client
+/prisma/dev.db
+/prisma/*.sqlite
+/prisma/*.db
+/prisma/.DS_Store
+/prisma/migrations/
+!.prisma/client/
+
+
+.env

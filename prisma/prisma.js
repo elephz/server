@@ -1,15 +1,12 @@
 const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-
-async function main() {
-  const users = await prisma.user.findMany();
-  console.log(users);
-  await prisma.$disconnect();
-}
-
-main().catch(e => {
-  console.error(e);
-  process.exit(1);
-});
+const { pagination } = require("prisma-extension-pagination");
+const prisma = new PrismaClient().$extends(
+  pagination({
+    pages: {
+      limit: 10, 
+      includePageCount: true, // include counters by default
+    },
+  })
+);
 
 module.exports = prisma;
